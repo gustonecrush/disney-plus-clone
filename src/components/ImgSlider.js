@@ -25,6 +25,9 @@ function ImgSlider() {
       <Wrap>
         <img src="/images/badging-3.jpeg" />
       </Wrap>
+      <Wrap>
+        <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6E6A40643CCD0BD486A70C2988E3146B20C70B24A2C701A13D3C8E1B7D68D1BC/compose?width=2880&aspectRatio=3.91&format=jpeg&label=391_scrim" />
+      </Wrap>
     </Carousel>
   );
 }
@@ -56,7 +59,7 @@ const Carousel = styled(Slider)`
 
 const Wrap = styled.div`
   cursor: pointer;
-  //   margin-right: 60;
+  
   img {
     border: 4px solid transparent;
     border-radius: 4px;

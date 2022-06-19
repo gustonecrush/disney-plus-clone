@@ -10,6 +10,7 @@ import {
   Navigate,
   Routes,
 } from "react-router-dom";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="detail" element={<Detail/>} />
+          <Route path="detail/:id" element={<Detail/>} />
           <Route path="/" element={<Home/>} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
       </Router>
     </div>

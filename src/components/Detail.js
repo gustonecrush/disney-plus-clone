@@ -1,43 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
 
 function Detail() {
+  const { id } = useParams();
+  const [movie, setMovie] = useState();
+
+  useEffect(() => {
+    // Grab the movies info from DB
+    db.collection("movies")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          // save the movie data
+          setMovie(doc.data());
+        } else {
+          // redirect to home page
+        }
+      });
+  }, [id]);
+
   return (
     <Container>
-      <Background>
-        <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/EF9E420B6A8FAD0D7E87822F608D7737FA6DA9F0DBCCE1A97EB5DFDE73F5D168/scale?width=2880&aspectRatio=1.78&format=jpeg" />
-      </Background>
-      <ImageTitle>
-        <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/5E0CAA4F05C05A01F1EFAE20B2A4568F1A42CB76EE7C8749A1C174602390EF46/scale?width=1920&aspectRatio=1.78&format=png" />
-      </ImageTitle>
-      <Controls>
-        <PlayButton>
-          <img src="/images/play-icon-black.png" />
-          <span>PLAY</span>
-        </PlayButton>
-        <TrailerButton>
-          <img src="/images/play-icon-white.png" />
-          <span>TRAILER</span>
-        </TrailerButton>
-        <AddButoon>
-          <span>+</span>
-        </AddButoon>
-        <GroupWatchButton>
-          <img src="/images/group-icon.png" />
-        </GroupWatchButton>
-      </Controls>
+      {movie && (
+        <>
+          <Background>
+            <img src={movie.backgroundImg} />
+          </Background>
+          <ImageTitle>
+            <img src={movie.titleImg} />
+          </ImageTitle>
+          <Controls>
+            <PlayButton>
+              <img src="/images/play-icon-black.png" />
+              <span>PLAY</span>
+            </PlayButton>
+            <TrailerButton>
+              <img src="/images/play-icon-white.png" />
+              <span>TRAILER</span>
+            </TrailerButton>
+            <AddButoon>
+              <span>+</span>
+            </AddButoon>
+            <GroupWatchButton>
+              <img src="/images/group-icon.png" />
+            </GroupWatchButton>
+          </Controls>
 
-      <Subtitle>
-        2019 • 3h 5m, Science Fiction, Fantasy, Super Hero, Action-Adventure
-      </Subtitle>
-      <Description>
-        The epic conclusion to the Infinity Saga that became a critically
-        acclaimed worldwide phenomenon, this dramatic showdown pits the Avengers
-        against Thanos. After devastating events wiped out half the world’s
-        population and fractured their ranks, the remaining heroes struggle to
-        move forward. But they must come together to restore order and harmony
-        in the universe and bring their loved ones back.
-      </Description>
+          <Subtitle>{movie.subTitle}</Subtitle>
+          <Description>{movie.description}</Description>
+        </>
+      )}
     </Container>
   );
 }
