@@ -91,7 +91,7 @@ function Header() {
             </a>
           </NavMenu>
 
-          <UserImg onClick={signOut} src="/images/user.png" />
+          <UserImg onClick={signOut} src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/48A531D5FA06BD087151D82A68AA98FFC6BBE16D342DFF4AA09FDCEB8D8F59E8/scale?width=600&aspectRatio=1.00&format=png" />
         </>
       )}
     </Nav>
