@@ -1,7 +1,7 @@
 # DOCUMENTATION
 
 ## ABOUT
-Disney+ clone is an UI web application which is built using React Js as frontend framework and styled component as styling framework. The data store in Firebase. The making of this clone is instructed by <a href="https://youtu.be/MqDlsjc8GLo">Sonny Sangha</a>.
+Disney+ clone is an UI web application which is built using React Js as frontend framework and styled component as styling framework. The data store in Firebase. The making of this clone is instructed by <a href="https://youtu.be/kn8HPNwPEkw">Clever Programmer</a>.
 
 ## START PROJECT
 
